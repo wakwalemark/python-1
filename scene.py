@@ -36,6 +36,11 @@ def main():
 
     #calling the draw ground function
     draw_ground(canvas, scene_width, scene_height)
+    draw_pine_tree(canvas, 240, 320)
+    draw_pine_tree(canvas, 160, 280)
+    draw_pine_tree(canvas, 100, 250)
+    draw_pine_tree(canvas, 500, 350)
+    draw_pine_tree(canvas, 600, 280)
     
 
     # Call the finish_drawing function
@@ -50,6 +55,25 @@ def draw_sky(canvas, scene_width, scene_height):
 
 def draw_ground(canvas, scene_width, scene_height):
     draw_rectangle(canvas, 0, 0, scene_width, scene_height / 3, width=0, fill="tan4")
+
+def draw_pine_tree(canvas, peak_x, peak_y):
+    """Draw one pine tree at location (peak_x, peak_y)"""
+
+    # Compute the coordinates of the skirt and trunk.
+    skirt_left  = peak_x - 70
+    skirt_right = peak_x + 70
+    skirt_bottom = peak_y - 210
+    trunk_left  = peak_x - 10
+    trunk_right = peak_x + 10
+    trunk_bottom = peak_y - 260
+
+    # Draw the tree trunk.
+    draw_rectangle(canvas, trunk_left, trunk_bottom,
+            trunk_right, skirt_bottom, fill="brown")
+
+    # Draw the tree skirt.
+    draw_polygon(canvas, skirt_left, skirt_bottom, peak_x, peak_y,
+            skirt_right, skirt_bottom, fill="forestGreen")   
 
 
 # Call the main function so that
